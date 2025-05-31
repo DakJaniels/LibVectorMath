@@ -32,6 +32,7 @@ LibVectorMath.version = "1.0.0"
 
 -- -----------------------------------------------------------------------------
 --- Copies mixins into an existing object
+---
 ---@generic T1, T2
 ---@param object T1
 ---@param ... T2
@@ -49,6 +50,7 @@ end
 
 -- -----------------------------------------------------------------------------
 --- Copies mixins into a new object
+---
 ---@generic T1, T2
 ---@param mixin T1
 ---@param ... T2
