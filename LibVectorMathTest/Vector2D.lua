@@ -29,7 +29,7 @@ local atan2 = math.atan2
 ---@field Create fun(x: number, y: number):Vector2DMixin
 ---@field AreEqual fun(left: Vector2DMixin, right: Vector2DMixin):boolean
 local Vector2D = {}
-LibVectorMath.Vector2D = Vector2D
+
 -- -----------------------------------------------------------------------------
 -- - Vector2DMixin
 -- -----------------------------------------------------------------------------

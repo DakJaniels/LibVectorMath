@@ -8,6 +8,7 @@ local atan2 = math.atan2
 local asin = math.asin
 local sqrt = math.sqrt
 
+
 -- -----------------------------------------------------------------------------
 -- - Vector3D
 -- -----------------------------------------------------------------------------
@@ -32,7 +33,6 @@ local sqrt = math.sqrt
 ---@field Create fun(x: number, y: number, z: number):Vector3DMixin
 ---@field AreEqual fun(left: Vector3DMixin, right: Vector3DMixin):boolean
 local Vector3D = {}
-LibVectorMath.Vector3D = Vector3D
 
 -- -----------------------------------------------------------------------------
 -- - Vector3DMixin

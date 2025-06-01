@@ -1,0 +1,22 @@
+return {
+    _all = {
+        coverage = true,
+        verbose = true,
+        pattern = "Test%.lua$",
+        lpath = "?.lua;?/init.lua;../?.lua",
+        ROOT = {"."}
+    },
+    default = {
+        verbose = true,
+        ROOT = {"."}
+    },
+    vector2d = {
+        ROOT = {"Vector2DTest.lua"}
+    },
+    vector3d = {
+        ROOT = {"Vector3DTest.lua"}
+    },
+    vector4d = {
+        ROOT = {"Vector4DTest.lua"}
+    }
+} 

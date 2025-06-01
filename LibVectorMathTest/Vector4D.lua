@@ -23,7 +23,7 @@ local sqrt = math.sqrt
 ---@field Create fun(x: number, y: number, z: number, w: number):Vector4DMixin
 ---@field AreEqual fun(left: Vector4DMixin, right: Vector4DMixin):boolean
 local Vector4D = {}
-LibVectorMath.Vector4D = Vector4D
+
 -- -----------------------------------------------------------------------------
 -- - Vector4DMixin
 -- -----------------------------------------------------------------------------
