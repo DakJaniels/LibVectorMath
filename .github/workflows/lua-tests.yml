@@ -18,7 +18,7 @@ jobs:
       uses: leafo/gh-actions-lua@v11
       with:
         luaVersion: "5.1"
-        installPath: "./LibVectorMathTest/.lua"
+        luaCompileFlags: "INSTALL_TOP=./LibVectorMathTest/.lua"
       continue-on-error: true
 
     - name: Fallback Lua Installation
@@ -40,7 +40,6 @@ jobs:
       with:
         luarocksVersion: "3.11.1"
         luaVersion: "5.1"
-        installPath: "./LibVectorMathTest/.lua"
 
     - name: Install dependencies
       run: |
