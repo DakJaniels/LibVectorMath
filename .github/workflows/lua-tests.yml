@@ -15,7 +15,7 @@ jobs:
 
     - name: Setup Lua
       id: lua-setup
-      uses: leafo/gh-actions-lua@v9
+      uses: leafo/gh-actions-lua@v11
       with:
         luaVersion: "5.1"
       continue-on-error: true
@@ -34,9 +34,9 @@ jobs:
         echo "LUA_PATH=/usr/share/lua/5.1/?.lua;;" >> $GITHUB_ENV
 
     - name: Setup Luarocks
-      uses: leafo/gh-actions-luarocks@v4
+      uses: leafo/gh-actions-luarocks@v5
       with:
-        luarocksVersion: "3.8.0"
+        luarocksVersion: "3.11.1"
 
     - name: Install dependencies
       run: |
