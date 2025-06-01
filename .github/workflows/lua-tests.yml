@@ -17,7 +17,15 @@ jobs:
       uses: leafo/gh-actions-lua@v9
       with:
         luaVersion: "5.1"
-        
+      continue-on-error: true
+      
+    - name: Fallback Lua Installation
+      if: failure()
+      run: |
+        echo "Fallback: Installing Lua manually..."
+        sudo apt-get update
+        sudo apt-get install -y lua5.1 luarocks
+      
     - name: Setup Luarocks
       uses: leafo/gh-actions-luarocks@v4
       
@@ -25,7 +33,7 @@ jobs:
       run: |
         luarocks install busted
         luarocks install luacov
-      
+        
     - name: Run tests
       run: |
         cd LibVectorMathTest
@@ -36,4 +44,4 @@ jobs:
       with:
         name: coverage-report
         path: LibVectorMathTest/luacov.report.out
-        if-no-files-found: ignore 
+        if-no-files-found: ignore
