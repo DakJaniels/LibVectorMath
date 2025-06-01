@@ -25,9 +25,14 @@ jobs:
         echo "Fallback: Installing Lua manually..."
         sudo apt-get update
         sudo apt-get install -y lua5.1 luarocks
+        echo "::set-output name=lua-path:/usr/bin/lua5.1"
       
     - name: Setup Luarocks
       uses: leafo/gh-actions-luarocks@v4
+      with:
+        luarocksVersion: "3.8.0"
+      run: |
+        luarocks config --lua=/usr/bin/lua5.1
       
     - name: Install dependencies
       run: |
