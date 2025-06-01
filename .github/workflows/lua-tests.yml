@@ -17,7 +17,7 @@ jobs:
       id: lua-setup
       uses: leafo/gh-actions-lua@v11
       with:
-        luaVersion: "5.1"
+        withLuaPath: "5.1"
         luaCompileFlags: "INSTALL_TOP=./LibVectorMathTest/.lua"
       continue-on-error: true
 
