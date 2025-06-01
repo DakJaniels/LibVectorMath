@@ -11,38 +11,20 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Setup Lua
       id: lua-setup
       uses: leafo/gh-actions-lua@v11
       with:
-        luaRocksVersion: "3.11.1"
-        withLuaPath: true
         luaVersion: "5.1"
         luaCompileFlags: "INSTALL_TOP=./LibVectorMathTest/.lua"
         buildCache: true
-      continue-on-error: true
 
-    - name: Fallback Lua Installation
-      if: steps.lua-setup.outcome == 'failure'
-      run: |
-        echo "Fallback: Installing Lua manually..."
-        sudo apt-get update
-        sudo apt-get install -y lua5.1 luarocks
-
-    - name: Set Lua Path
-      if: steps.lua-setup.outcome == 'failure'
-      run: |
-        echo "LUA=./LibVectorMathTest/.lua/bin/lua" >> $GITHUB_ENV
-        echo "LUA_PATH=./LibVectorMathTest/.lua/share/lua/5.1/?.lua;;" >> $GITHUB_ENV
-        echo "LUA_CPATH=./LibVectorMathTest/.lua/lib/lua/5.1/?.so;;" >> $GITHUB_ENV
-
-    - name: Setup Luarocks
+    - name: Setup LuaRocks
       uses: leafo/gh-actions-luarocks@v5
       with:
         luarocksVersion: "3.11.1"
-        luaVersion: "5.1"
 
     - name: Install dependencies
       run: |
