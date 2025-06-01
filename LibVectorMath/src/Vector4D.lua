@@ -1,7 +1,10 @@
 -- -----------------------------------------------------------------------------
 -- - Lua Locals
 -- -----------------------------------------------------------------------------
-
+local _G = getfenv(0)
+local rawset = _G.rawset
+local setmetatable = _G.setmetatable
+local math = _G.math
 local sqrt = math.sqrt
 
 -- -----------------------------------------------------------------------------
@@ -23,7 +26,7 @@ local sqrt = math.sqrt
 ---@field Create fun(x: number, y: number, z: number, w: number):Vector4DMixin
 ---@field AreEqual fun(left: Vector4DMixin, right: Vector4DMixin):boolean
 local Vector4D = {}
-LibVectorMath.Vector4D = Vector4D
+rawset(_G["LibVectorMath"], "Vector4D", Vector4D)
 -- -----------------------------------------------------------------------------
 -- - Vector4DMixin
 -- -----------------------------------------------------------------------------
@@ -45,7 +48,7 @@ LibVectorMath.Vector4D = Vector4D
 ---@field Normalize fun(self: Vector4DMixin):Vector4DMixin
 ---@field Clone fun(self: Vector4DMixin):Vector4DMixin
 local Vector4DMixin = {}
-
+rawset(_G["LibVectorMath"], "Vector4DMixin", Vector4DMixin)
 -- -----------------------------------------------------------------------------
 -- - Scales a 4D vector by a scalar value
 -- -----------------------------------------------------------------------------

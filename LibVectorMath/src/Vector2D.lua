@@ -1,7 +1,10 @@
 -- -----------------------------------------------------------------------------
 -- - Lua Locals
 -- -----------------------------------------------------------------------------
-
+local _G = getfenv(0)
+local rawset = _G.rawset
+local math = _G.math
+local setmetatable = _G.setmetatable
 local sqrt = math.sqrt
 local cos = math.cos
 local sin = math.sin
@@ -29,7 +32,7 @@ local atan2 = math.atan2
 ---@field Create fun(x: number, y: number):Vector2DMixin
 ---@field AreEqual fun(left: Vector2DMixin, right: Vector2DMixin):boolean
 local Vector2D = {}
-LibVectorMath.Vector2D = Vector2D
+rawset(_G["LibVectorMath"], "Vector2D", Vector2D)
 -- -----------------------------------------------------------------------------
 -- - Vector2DMixin
 -- -----------------------------------------------------------------------------
@@ -52,7 +55,7 @@ LibVectorMath.Vector2D = Vector2D
 ---@field Clone fun(self: Vector2DMixin):Vector2DMixin
 ---@field IsZero fun(self: Vector2DMixin):boolean
 local Vector2DMixin = {}
-
+rawset(_G["LibVectorMath"], "Vector2DMixin", Vector2DMixin)
 -- -----------------------------------------------------------------------------
 -- - Checks if this vector is equal to another vector
 -- -----------------------------------------------------------------------------

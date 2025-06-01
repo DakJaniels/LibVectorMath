@@ -1,7 +1,10 @@
 -- -----------------------------------------------------------------------------
 -- - Lua Locals
 -- -----------------------------------------------------------------------------
-
+local _G = getfenv(0)
+local rawset = _G.rawset
+local math = _G.math
+local setmetatable = _G.setmetatable
 local cos = math.cos
 local sin = math.sin
 local atan2 = math.atan2
@@ -32,7 +35,7 @@ local sqrt = math.sqrt
 ---@field Create fun(x: number, y: number, z: number):Vector3DMixin
 ---@field AreEqual fun(left: Vector3DMixin, right: Vector3DMixin):boolean
 local Vector3D = {}
-LibVectorMath.Vector3D = Vector3D
+rawset(_G["LibVectorMath"], "Vector3D", Vector3D)
 
 -- -----------------------------------------------------------------------------
 -- - Vector3DMixin
@@ -55,7 +58,7 @@ LibVectorMath.Vector3D = Vector3D
 ---@field Normalize fun(self: Vector3DMixin):Vector3DMixin
 ---@field Clone fun(self: Vector3DMixin):Vector3DMixin
 local Vector3DMixin = {}
-
+rawset(_G["LibVectorMath"], "Vector3DMixin", Vector3DMixin) 
 -- -----------------------------------------------------------------------------
 -- - Scales a 3D vector by a scalar value
 -- -----------------------------------------------------------------------------
