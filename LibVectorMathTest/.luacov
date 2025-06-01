@@ -1,0 +1,32 @@
+return {
+  -- filename to store stats collected
+  statsfile = "luacov.stats.out",
+
+  -- filename to store report
+  reportfile = "luacov.report.out",
+
+  -- luacov.stats file updating frequency
+  savestepsize = 100,
+
+  -- Run reporter on completion?
+  runreport = true,
+
+  -- Delete stats file after reporting?
+  deletestats = false,
+
+  -- Patterns for files to include
+  include = {
+    "Vector2D",
+    "Vector3D",
+    "Vector4D",
+    "LibVectorMath"
+  },
+
+  -- Patterns for files to exclude
+  exclude = {
+    "luacov$",
+    "luacov%..*$",
+    ".*Test$",
+    ".*Test%..*$",
+  },
+} 
