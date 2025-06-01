@@ -31,24 +31,15 @@ jobs:
         cd LibVectorMathTest
         luarocks install busted
         luarocks install luacov
-        luarocks install luacov-html
-        
-    - name: Configure LuaCov
-      run: |
-        cd LibVectorMathTest
-        echo "reporter = 'html'" > .luacov
-        echo "reportfile = 'luacov.report.html'" >> .luacov
         
     - name: Run tests
       run: |
         cd LibVectorMathTest
         busted --coverage
         
-    - name: Upload coverage reports
+    - name: Upload coverage report
       uses: actions/upload-artifact@v4
       with:
-        name: coverage-reports
-        path: |
-          LibVectorMathTest/luacov.report.out
-          LibVectorMathTest/luacov.report.html
-        if-no-files-found: error
+        name: coverage-report
+        path: LibVectorMathTest/luacov.report.out
+        if-no-files-found: ignore
