@@ -18,6 +18,7 @@ jobs:
       uses: leafo/gh-actions-lua@v11
       with:
         luaVersion: "5.1"
+        installPath: "./LibVectorMathTest/.lua"
       continue-on-error: true
 
     - name: Fallback Lua Installation
@@ -30,16 +31,20 @@ jobs:
     - name: Set Lua Path
       if: steps.lua-setup.outcome == 'failure'
       run: |
-        echo "LUA=/usr/bin/lua5.1" >> $GITHUB_ENV
-        echo "LUA_PATH=/usr/share/lua/5.1/?.lua;;" >> $GITHUB_ENV
+        echo "LUA=./LibVectorMathTest/.lua/bin/lua" >> $GITHUB_ENV
+        echo "LUA_PATH=./LibVectorMathTest/.lua/share/lua/5.1/?.lua;;" >> $GITHUB_ENV
+        echo "LUA_CPATH=./LibVectorMathTest/.lua/lib/lua/5.1/?.so;;" >> $GITHUB_ENV
 
     - name: Setup Luarocks
       uses: leafo/gh-actions-luarocks@v5
       with:
         luarocksVersion: "3.11.1"
+        luaVersion: "5.1"
+        installPath: "./LibVectorMathTest/.lua"
 
     - name: Install dependencies
       run: |
+        cd LibVectorMathTest
         luarocks install busted
         luarocks install luacov
         
