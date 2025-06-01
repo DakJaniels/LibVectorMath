@@ -31,8 +31,6 @@ jobs:
       uses: leafo/gh-actions-luarocks@v4
       with:
         luarocksVersion: "3.8.0"
-      run: |
-        luarocks config --lua=/usr/bin/lua5.1
       
     - name: Install dependencies
       run: |
