@@ -12,26 +12,32 @@ jobs:
     
     steps:
     - uses: actions/checkout@v3
-      
+
     - name: Setup Lua
+      id: lua-setup
       uses: leafo/gh-actions-lua@v9
       with:
         luaVersion: "5.1"
       continue-on-error: true
-      
+
     - name: Fallback Lua Installation
-      if: failure()
+      if: steps.lua-setup.outcome == 'failure'
       run: |
         echo "Fallback: Installing Lua manually..."
         sudo apt-get update
         sudo apt-get install -y lua5.1 luarocks
-        echo "::set-output name=lua-path:/usr/bin/lua5.1"
-      
+
+    - name: Set Lua Path
+      if: steps.lua-setup.outcome == 'failure'
+      run: |
+        echo "LUA=/usr/bin/lua5.1" >> $GITHUB_ENV
+        echo "LUA_PATH=/usr/share/lua/5.1/?.lua;;" >> $GITHUB_ENV
+
     - name: Setup Luarocks
       uses: leafo/gh-actions-luarocks@v4
       with:
         luarocksVersion: "3.8.0"
-      
+
     - name: Install dependencies
       run: |
         luarocks install busted
