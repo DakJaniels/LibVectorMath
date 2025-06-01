@@ -34,7 +34,9 @@
         "requirePattern": []
     },
     "workspace": {
-        "ignoreDir": [],
+        "ignoreDir": [
+            "LibVectorMathTest"
+        ],
         "ignoreGlobs": [],
         "library": [
             "C:/Users/dack_janiels/Documents/lua-language-server/meta/3rd/busted/library",
